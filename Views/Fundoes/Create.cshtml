@@ -1,0 +1,48 @@
+﻿@model MaisFII.Models.Fundo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Fundo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RazaoSocial" class="control-label"></label>
+                <input asp-for="RazaoSocial" class="form-control" />
+                <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sigla" class="control-label"></label>
+                <input asp-for="Sigla" class="form-control" />
+                <span asp-validation-for="Sigla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Segmento" class="control-label"></label>
+                <input asp-for="Segmento" class="form-control" />
+                <span asp-validation-for="Segmento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkBMF" class="control-label"></label>
+                <input asp-for="LinkBMF" class="form-control" />
+                <span asp-validation-for="LinkBMF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
