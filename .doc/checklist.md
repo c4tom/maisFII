@@ -1,0 +1,5 @@
+- Usuario
+  - Model - Class
+  - Controller Class- UsuariosController (vazio)
+  - View
+    - pasta Views/Usuarios
