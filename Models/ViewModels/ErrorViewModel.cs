@@ -1,6 +1,6 @@
 using System;
 
-namespace MaisFII.Models
+namespace MaisFII.Models.ViewModels
 {
     public class ErrorViewModel
     {
