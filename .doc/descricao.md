@@ -11,6 +11,13 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 ## UML
 ![](./Diagrama-maisFII.svg)
 
+## Requisitos
+
+- MySQL
+- CODE-FIRST Workflow
+- NuGet Pacotes
+  - `Install-Package Microsoft.EntityFrameworkCore.Design -Version 3.0.1`
+
 ## Desenvolvimento Fase 1 (trabalho da faculdade)
 - Usuario
   - CRUD
@@ -40,3 +47,8 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
     - Ganho de capital e dividendos de cada fundo da carteira
     - Dividendos pagos desde a primeira operação adicionada na carteira - tipo "stacked bar"
   - Histórico de dividendos de cada fundo
+
+
+## Referências
+
+- http://www.macoratti.net/17/05/efcore_mysql1.htm
