@@ -9,22 +9,22 @@ using MaisFII.Models;
 
 namespace MaisFII.Controllers
 {
-    public class HistoricoFundoesController : Controller
+    public class FundosController : Controller
     {
         private readonly MaisFIIContext _context;
 
-        public HistoricoFundoesController(MaisFIIContext context)
+        public FundosController(MaisFIIContext context)
         {
             _context = context;
         }
 
-        // GET: HistoricoFundoes
+        // GET: Fundos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.HistoricoFundo.ToListAsync());
+            return View(await _context.Fundo.ToListAsync());
         }
 
-        // GET: HistoricoFundoes/Details/5
+        // GET: Fundos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace MaisFII.Controllers
                 return NotFound();
             }
 
-            var historicoFundo = await _context.HistoricoFundo
+            var fundo = await _context.Fundo
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historicoFundo == null)
+            if (fundo == null)
             {
                 return NotFound();
             }
 
-            return View(historicoFundo);
+            return View(fundo);
         }
 
-        // GET: HistoricoFundoes/Create
+        // GET: Fundos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: HistoricoFundoes/Create
+        // POST: Fundos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data")] HistoricoFundo historicoFundo)
+        public async Task<IActionResult> Create([Bind("Id,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(historicoFundo);
+                _context.Add(fundo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(historicoFundo);
+            return View(fundo);
         }
 
-        // GET: HistoricoFundoes/Edit/5
+        // GET: Fundos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace MaisFII.Controllers
                 return NotFound();
             }
 
-            var historicoFundo = await _context.HistoricoFundo.FindAsync(id);
-            if (historicoFundo == null)
+            var fundo = await _context.Fundo.FindAsync(id);
+            if (fundo == null)
             {
                 return NotFound();
             }
-            return View(historicoFundo);
+            return View(fundo);
         }
 
-        // POST: HistoricoFundoes/Edit/5
+        // POST: Fundos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data")] HistoricoFundo historicoFundo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
         {
-            if (id != historicoFundo.Id)
+            if (id != fundo.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace MaisFII.Controllers
             {
                 try
                 {
-                    _context.Update(historicoFundo);
+                    _context.Update(fundo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HistoricoFundoExists(historicoFundo.Id))
+                    if (!FundoExists(fundo.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace MaisFII.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(historicoFundo);
+            return View(fundo);
         }
 
-        // GET: HistoricoFundoes/Delete/5
+        // GET: Fundos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace MaisFII.Controllers
                 return NotFound();
             }
 
-            var historicoFundo = await _context.HistoricoFundo
+            var fundo = await _context.Fundo
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historicoFundo == null)
+            if (fundo == null)
             {
                 return NotFound();
             }
 
-            return View(historicoFundo);
+            return View(fundo);
         }
 
-        // POST: HistoricoFundoes/Delete/5
+        // POST: Fundos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var historicoFundo = await _context.HistoricoFundo.FindAsync(id);
-            _context.HistoricoFundo.Remove(historicoFundo);
+            var fundo = await _context.Fundo.FindAsync(id);
+            _context.Fundo.Remove(fundo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HistoricoFundoExists(int id)
+        private bool FundoExists(int id)
         {
-            return _context.HistoricoFundo.Any(e => e.Id == id);
+            return _context.Fundo.Any(e => e.Id == id);
         }
     }
 }

@@ -16,7 +16,17 @@ namespace MaisFII.Models {
 
         public Usuario Usuario { get; set; }
 
-        public ICollection<Fundo> Fundo { get; set; }
+        public ICollection<OperacaoCompraVenda> Operacoes { get; set; } = new List<OperacaoCompraVenda>();
+
+        public Carteira() { }
+
+        public Carteira(int id, string nome, string descricao, Usuario usuario)
+        {
+            Id = id;
+            Nome = nome;
+            Descricao = descricao;
+            Usuario = usuario;
+        }
 
         public List<Carteira> Listar () {
             return null;

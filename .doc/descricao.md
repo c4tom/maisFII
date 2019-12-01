@@ -17,6 +17,7 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - CODE-FIRST Workflow
 - NuGet Pacotes
   - `Install-Package Microsoft.EntityFrameworkCore.Design -Version 3.0.1`
+  - `Install-Package Pomelo.EntityFrameworkCore.MySql`
 
 ## Desenvolvimento Fase 1 (trabalho da faculdade)
 - Usuario
@@ -52,3 +53,4 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 ## Referências
 
 - http://www.macoratti.net/17/05/efcore_mysql1.htm
+- https://www.entityframeworktutorial.net/entity-relationships.aspx

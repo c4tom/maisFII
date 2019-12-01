@@ -15,14 +15,18 @@ namespace MaisFII.Models
         {
         }
 
-        public DbSet<maisFII.Models.Usuario> Usuario { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
-        public DbSet<MaisFII.Models.Carteira> Carteira { get; set; }
+        public DbSet<Carteira> Carteira { get; set; }
 
-        public DbSet<MaisFII.Models.Fundo> Fundo { get; set; }
+        public DbSet<Fundo> Fundo { get; set; }
 
-        public DbSet<MaisFII.Models.HistoricoFundo> HistoricoFundo { get; set; }
+        public DbSet<HistoricoFundo> HistoricoFundo { get; set; }
+         
+        public DbSet<OperacaoCompraVenda> OperacaoCompraVenda { get; set; }
 
-        public DbSet<MaisFII.Models.OperacaoCompraVenda> OperacaoCompraVenda { get; set; }
+        public DbSet<Fundo> Fundos { get; set; }
+        public DbSet<Carteira> Carteiras { get; set; }
+
     }
 }

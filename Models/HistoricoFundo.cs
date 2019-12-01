@@ -10,9 +10,16 @@ namespace MaisFII.Models {
         [Key]
         public int Id { get; set; }
 
+        public float valor { get; set; }
+
         public Fundo Fundo { get; set; }
 
         public DateTime Data { get; set; }
+
+        public HistoricoFundo()
+        {
+
+        }
 
         public List<HistoricoFundo> Listar () {
             return null;

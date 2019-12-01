@@ -53,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Create([Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,OperacaoTipo")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,OperacaoTipo")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (id != operacaoCompraVenda.Id)
             {

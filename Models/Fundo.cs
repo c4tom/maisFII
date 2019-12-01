@@ -17,11 +17,18 @@ namespace MaisFII.Models {
 
         public string LinkBMF { get; set; }
 
-        public ICollection<HistoricoFundo> HistoricoFundo;
+        public ICollection<OperacaoCompraVenda> Operacoes { get; set; } = new List<OperacaoCompraVenda>();
 
-        public Carteira carteira { get; set; }
+        public Fundo() { }
 
-        public ICollection<OperacaoCompraVenda> OperacaoCompraVenda;
+        public Fundo(int id, string razaoSocial, string sigla, string segmento, string linkBMF)
+        {
+            Id = id;
+            RazaoSocial = razaoSocial;
+            Sigla = sigla;
+            Segmento = segmento;
+            LinkBMF = linkBMF;
+        }
 
         public List<Fundo> Listar () {
             return null;

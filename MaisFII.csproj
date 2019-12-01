@@ -1,21 +1,60 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Carteiras\Create.cshtml" />
+    <None Include="Views\Carteiras\Delete.cshtml" />
+    <None Include="Views\Carteiras\Details.cshtml" />
+    <None Include="Views\Carteiras\Edit.cshtml" />
+    <None Include="Views\Carteiras\Index.cshtml" />
+    <None Include="Views\Fundos\Create.cshtml" />
+    <None Include="Views\Fundos\Delete.cshtml" />
+    <None Include="Views\Fundos\Details.cshtml" />
+    <None Include="Views\Fundos\Edit.cshtml" />
+    <None Include="Views\Fundos\Index.cshtml" />
+    <None Include="Views\HistoricoFundos\Create.cshtml" />
+    <None Include="Views\HistoricoFundos\Delete.cshtml" />
+    <None Include="Views\HistoricoFundos\Details.cshtml" />
+    <None Include="Views\HistoricoFundos\Edit.cshtml" />
+    <None Include="Views\HistoricoFundos\Index.cshtml" />
+    <None Include="Views\OperacaoCompraVendas\Create.cshtml" />
+    <None Include="Views\OperacaoCompraVendas\Delete.cshtml" />
+    <None Include="Views\OperacaoCompraVendas\Details.cshtml" />
+    <None Include="Views\OperacaoCompraVendas\Edit.cshtml" />
+    <None Include="Views\OperacaoCompraVendas\Index.cshtml" />
+    <None Include="Views\Usuarios\Create.cshtml" />
+    <None Include="Views\Usuarios\Delete.cshtml" />
+    <None Include="Views\Usuarios\Details.cshtml" />
+    <None Include="Views\Usuarios\Edit.cshtml" />
+    <None Include="Views\Usuarios\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Carteiras\" />
+    <Folder Include="Views\Fundos\" />
+    <Folder Include="Views\HistoricoFundos\" />
+    <Folder Include="Views\OperacaoCompraVendas\" />
+    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
 
 </Project>

@@ -7,10 +7,6 @@ using MaisFII.Models;
 namespace maisFII.Models {
     [Table ("Usuario")]
     public class Usuario {
-        public Usuario () {
-            CriadoEm = DateTime.Now;
-            Endereco = new Endereco ();
-        }
         [Key]
         public int Id { get; set; }
 
@@ -32,11 +28,26 @@ namespace maisFII.Models {
 
         public DateTime DataNascimento { get; set; }
 
-        public DateTime CriadoEm { get; set; }
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
 
-        public ICollection<Carteira> Carteira { get; set; }
+        public Endereco Endereco { get; set; } = new Endereco();
 
-        public Endereco Endereco { get; set; }
+        public Usuario()
+        {
+        }
+
+        public Usuario(int id, string nome, string email, string senha, string confirmacaoSenha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            ConfirmacaoSenha = confirmacaoSenha;
+            Cpf = cpf;
+            DataNascimento = dataNascimento;
+            CriadoEm = criadoEm;
+            Endereco = endereco;
+        }
 
         public bool Inserir () {
             return false;

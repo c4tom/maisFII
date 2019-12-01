@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MaisFII.Models;
+using MaisFII.Data;
 
 namespace MaisFII
 {
@@ -23,7 +24,10 @@ namespace MaisFII
             services.AddControllersWithViews();
 
             services.AddDbContext<MaisFIIContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MaisFIIContext")));
+                options.UseMySql(Configuration.GetConnectionString("MaisFIIContext"), builder =>
+                builder.MigrationsAssembly("MaisFII")));
+            // Registrando Seed Service
+            services.AddScoped<SeedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

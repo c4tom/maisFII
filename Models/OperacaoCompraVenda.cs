@@ -2,9 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MaisFII.Models.Enums;
 
 namespace MaisFII.Models {
-    [Table("Operacao")]
+    [Table("OperacaoCompraVenda")]
     public class OperacaoCompraVenda {
         [Key]
         public int Id { get; set; }
@@ -16,11 +17,23 @@ namespace MaisFII.Models {
 
         public float ValorTaxaDaOperadora { get; set; }
 
-        // https://docs.microsoft.com/pt-br/ef/ef6/modeling/code-first/data-types/enums
-        public OperacaoTipo Operacao { get; set; }
+        public OperacaoTipo OperacaoTipo { get; set; }
 
         public Carteira Carteira { get; set; }
 
         public Fundo Fundo { get; set; }
+
+        public OperacaoCompraVenda() { }
+
+        public OperacaoCompraVenda(int id, DateTime dataOperacao, int quantidadeCota, float valorDaCota, float valorTaxaDaOperadora, Carteira carteira, Fundo fundo)
+        {
+            Id = id;
+            DataOperacao = dataOperacao;
+            QuantidadeCota = quantidadeCota;
+            ValorDaCota = valorDaCota;
+            ValorTaxaDaOperadora = valorTaxaDaOperadora;
+            Carteira = carteira;
+            Fundo = fundo;
+        }
     }
 }
