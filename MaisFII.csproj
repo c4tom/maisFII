@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ChoETL.JSON" Version="1.1.0.4" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -54,7 +56,6 @@
     <Folder Include="Views\Fundos\" />
     <Folder Include="Views\HistoricoFundos\" />
     <Folder Include="Views\OperacaoCompraVendas\" />
-    <Folder Include="Views\Usuarios\" />
   </ItemGroup>
 
 </Project>

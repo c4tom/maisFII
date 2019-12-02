@@ -10,6 +10,9 @@ namespace MaisFII.Models {
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Carteira")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MaxLength(70)]
         public string Nome { get; set; }
 
         public string Descricao { get; set; }

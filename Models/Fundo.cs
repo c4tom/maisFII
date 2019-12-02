@@ -9,12 +9,24 @@ namespace MaisFII.Models {
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Razão Social")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MaxLength(200)]
         public string RazaoSocial { get; set; }
 
+        [Display(Name = "Sigla")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MaxLength(20)]
+        [StringLength(20)]
         public string Sigla { get; set; }
 
+        [Display(Name = "Segmento")]
+        [MaxLength(70)]
+        [StringLength(10)]
         public string Segmento { get; set; }
 
+        [Display(Name = "Link")]
+        [StringLength(250)]
         public string LinkBMF { get; set; }
 
         public ICollection<OperacaoCompraVenda> Operacoes { get; set; } = new List<OperacaoCompraVenda>();

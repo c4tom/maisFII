@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MaisFII.Models;
 using maisFII.Models;
+using System.Net;
+using Microsoft.AspNetCore.Identity;
 
 namespace MaisFII.Controllers
 {
     public class UsuariosController : Controller
     {
         private readonly MaisFIIContext _context;
+
 
         public UsuariosController(MaisFIIContext context)
         {
@@ -41,6 +44,18 @@ namespace MaisFII.Controllers
             }
 
             return View(usuario);
+        }
+
+
+        [HttpPost]
+        public IActionResult BuscarDados(Usuario u)
+        {
+            string url = "https://www.4devs.com.br/ferramentas_online.php";
+
+            WebClient client = new WebClient();
+            TempData["Usuario"] = client.DownloadString(url);
+
+            return RedirectToAction(nameof(Create));
         }
 
         // GET: Usuarios/Create
@@ -80,6 +95,7 @@ namespace MaisFII.Controllers
             }
             return View(usuario);
         }
+
 
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

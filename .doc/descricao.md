@@ -18,6 +18,7 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - NuGet Pacotes
   - `Install-Package Microsoft.EntityFrameworkCore.Design -Version 3.0.1`
   - `Install-Package Pomelo.EntityFrameworkCore.MySql`
+  - `Install-Package ChoETL.JSON -Version 1.1.0.4` - csv to json
 
 ## Desenvolvimento Fase 1 (trabalho da faculdade)
 - Usuario
@@ -54,3 +55,4 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 
 - http://www.macoratti.net/17/05/efcore_mysql1.htm
 - https://www.entityframeworktutorial.net/entity-relationships.aspx
+- http://learningprogramming.net/net/asp-net-core-mvc/login-form-with-session-in-asp-net-core-mvc/

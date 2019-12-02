@@ -10,13 +10,20 @@ namespace maisFII.Models {
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        [MaxLength(70)]
+        [StringLength(70)]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "E-mail:")]
         [EmailAddress]
+        [StringLength(70)]
         public string Email { get; set; }
 
         [Display(Name = "Senha:")]
+        [StringLength(32)]
         public string Senha { get; set; }
 
         [Display(Name = "Confirmação da senha:")]
@@ -24,8 +31,13 @@ namespace maisFII.Models {
         [Compare("Senha", ErrorMessage = "Os campos não coincidem!")]
         public string ConfirmacaoSenha { get; set; }
 
+        [Display(Name = "CPF")]
+        [StringLength(16)]
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public string Cpf { get; set; }
 
+        [Display(Name = "Data de Nascimento")]
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public DateTime DataNascimento { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.Now;

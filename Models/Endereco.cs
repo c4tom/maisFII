@@ -13,18 +13,23 @@ namespace MaisFII.Models {
         public int Id { get; set; }
 
         [Display (Name = "Rua:")]
+        [StringLength(90)]
         public string Logradouro { get; set; }
 
         [Display (Name = "CEP:")]
+        [StringLength(9)]
         public string Cep { get; set; }
 
         [Display (Name = "Bairro:")]
+        [StringLength(70)]
         public string Bairro { get; set; }
 
         [Display (Name = "Cidade:")]
+        [StringLength(70)]
         public string Localidade { get; set; }
 
         [Display (Name = "Estado:")]
+        [StringLength(2)]
         public string Uf { get; set; }
         public DateTime CriadoEm { get; set; }
     }
