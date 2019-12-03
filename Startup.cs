@@ -30,6 +30,8 @@ namespace MaisFII
             services.AddDbContext<MaisFIIContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("MaisFIIContext"), builder =>
                 builder.MigrationsAssembly("MaisFII")));
+            
+            
             // Registrando Seed Service
             services.AddScoped<SeedService>();
         }

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MaisFII.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MaisFII.Models;
-using maisFII.Models;
-using System.Net;
-using Microsoft.AspNetCore.Identity;
+using MaisFII.Utils;
 
 namespace MaisFII.Controllers
 {
@@ -46,16 +41,10 @@ namespace MaisFII.Controllers
             return View(usuario);
         }
 
-
         [HttpPost]
-        public IActionResult BuscarDados(Usuario u)
+        public IActionResult BuscarDados()
         {
-            string url = "https://www.4devs.com.br/ferramentas_online.php";
-
-            WebClient client = new WebClient();
-            TempData["Usuario"] = client.DownloadString(url);
-
-            return RedirectToAction(nameof(Create));
+            return Json(Utils.Utils.obterDados());
         }
 
         // GET: Usuarios/Create

@@ -1,5 +1,6 @@
-﻿using MaisFII.Models;
-using System;
+﻿using System;
+using System.Linq;
+using MaisFII.Models;
 
 namespace MaisFII.Data
 {
@@ -16,6 +17,11 @@ namespace MaisFII.Data
         public void Seed()
         {
             Console.WriteLine("Seeding...");
+
+            if (!_context.Usuario.Any())
+            {
+                Usuario u1 = new Usuario(1, "Jose Silva","aaa@email.com","1234567","1",DateTime.Now, DateTime.Now, new Endereco());
+            }
         }
     }
 }

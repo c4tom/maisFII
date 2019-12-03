@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using MaisFII.Models;
 
-namespace maisFII.Models {
+namespace MaisFII.Models {
     [Table ("Usuario")]
     public class Usuario {
         [Key]
         public int Id { get; set; }
 
+        // [RegularExpression(@"^[A-Z]+[a-zA-Z'\s\p{L}]*$", ErrorMessage = "Somente Caracteres e espaço, e a primeira letra em maiúscula")]
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Campo obrigatório!")]
         [MaxLength(70)]
@@ -38,6 +39,7 @@ namespace maisFII.Models {
 
         [Display(Name = "Data de Nascimento")]
         [Required(ErrorMessage = "Campo obrigatório!")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataNascimento { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.Now;
@@ -48,13 +50,12 @@ namespace maisFII.Models {
         {
         }
 
-        public Usuario(int id, string nome, string email, string senha, string confirmacaoSenha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
+        public Usuario(int id, string nome, string email, string senha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Senha = senha;
-            ConfirmacaoSenha = confirmacaoSenha;
             Cpf = cpf;
             DataNascimento = dataNascimento;
             CriadoEm = criadoEm;

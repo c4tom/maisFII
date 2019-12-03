@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MaisFII.Models;
-using maisFII.Models;
 using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
@@ -35,7 +34,7 @@ namespace MaisFII.Controllers
             if (LoginExist(email, senha))
             {
                 HttpContext.Session.SetString("email", email);
-                return View("Successo");
+                return View("Sucesso");
             }
             else
             {
