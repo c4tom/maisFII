@@ -1,0 +1,49 @@
+### Teste de dados
+POST https://www.4devs.com.br/ferramentas_online.php
+content-type: application/x-www-form-urlencoded
+
+acao=gerar_pessoa&sexo=I&pontuacao=S&idade=0&cep_estado=PR&txt_qtde=1&cep_cidade=
+
+
+
+### TESTE FUNDOS ####
+
+GET https://localhost:44303/Api/FundosAPI
+
+### 
+GET https://localhost:44303/Api/FundosAPI/240
+
+
+
+### Inserir ####
+POST https://localhost:44303/Api/FundosAPI
+Content-Type: application/json
+
+ {
+    "razaoSocial": "eee",
+    "sigla": "eeee",
+    "segmento": "1111",
+    "linkBMF": "eeee",
+    "operacoes": []
+  }
+
+### Inserir em lote
+POST https://localhost:44303/Api/FundosAPI
+Content-Type: application/json
+
+[
+ {
+    "razaoSocial": "bbbb",
+    "sigla": "bbb",
+    "segmento": "1111",
+    "linkBMF": "bbb",
+    "operacoes": []
+  },
+  {
+    "razaoSocial": "ccc",
+    "sigla": "ccc",
+    "segmento": "1111",
+    "linkBMF": "cccc",
+    "operacoes": []
+  }
+]

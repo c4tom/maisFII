@@ -1,12 +1,15 @@
-# Projeto maisFII
+# Projeto MaisFII
 
 Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imobiliários
 
 ## Descrição
-- Usuários podem criar carteiras
-- Usuários podem registrar compra/venda de FII para uma carteira existente
+- Adicionar usuários via REST service ou manualmente (CRUD)
+- Gerenciamento de Fundos (CRUD)
+- Usuários podem gerenciar carteiras (CRUD)
+  - Fazer operações de ativos - compra/venda de FII para uma carteira existente
 - Listar valores de FII do dia X 
 - Importação de dados de conteúdo através de planilhas (CSV)
+- Tela de login com sessão
 
 ## UML
 ![](./Diagrama-maisFII.svg)
@@ -19,6 +22,7 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
   - `Install-Package Microsoft.EntityFrameworkCore.Design -Version 3.0.1`
   - `Install-Package Pomelo.EntityFrameworkCore.MySql`
   - `Install-Package ChoETL.JSON -Version 1.1.0.4` - csv to json
+  - `Install-Package PagedList.Mvc` - Paginação
 
 ## Desenvolvimento Fase 1 (trabalho da faculdade)
 - Usuario
@@ -56,3 +60,5 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - http://www.macoratti.net/17/05/efcore_mysql1.htm
 - https://www.entityframeworktutorial.net/entity-relationships.aspx
 - http://learningprogramming.net/net/asp-net-core-mvc/login-form-with-session-in-asp-net-core-mvc/
+- https://www.learnrazorpages.com/razor-pages/ajax/unobtrusive-ajax
+- https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
