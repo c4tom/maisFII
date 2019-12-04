@@ -11,9 +11,9 @@ namespace MaisFII.Controllers
 {
     public class CarteirasController : Controller
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
-        public CarteirasController(MaisFIIContext context)
+        public CarteirasController(Context context)
         {
             _context = context;
         }

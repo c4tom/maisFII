@@ -27,8 +27,8 @@ namespace MaisFII
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<MaisFIIContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("MaisFIIContext"), builder =>
+            services.AddDbContext<Context>(options =>
+                options.UseMySql(Configuration.GetConnectionString("Context"), builder =>
                 builder.MigrationsAssembly("MaisFII")));
             
             

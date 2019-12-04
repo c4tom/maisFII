@@ -11,9 +11,9 @@ namespace MaisFII.Controllers
 {
     public class HistoricoFundosController : Controller
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
-        public HistoricoFundosController(MaisFIIContext context)
+        public HistoricoFundosController(Context context)
         {
             _context = context;
         }

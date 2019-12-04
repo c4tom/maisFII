@@ -9,10 +9,10 @@ namespace MaisFII.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
 
-        public UsuariosController(MaisFIIContext context)
+        public UsuariosController(Context context)
         {
             _context = context;
         }

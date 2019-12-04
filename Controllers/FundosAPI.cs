@@ -13,9 +13,9 @@ namespace MaisFII.Controllers
     [ApiController]
     public class FundosAPI : ControllerBase
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
-        public FundosAPI(MaisFIIContext context)
+        public FundosAPI(Context context)
         {
             _context = context;
         }

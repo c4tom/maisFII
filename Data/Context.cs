@@ -7,9 +7,9 @@ using MaisFII.Models;
 
 namespace MaisFII.Models
 {
-    public class MaisFIIContext : DbContext
+    public class Context : DbContext
     {
-        public MaisFIIContext (DbContextOptions<MaisFIIContext> options)
+        public Context (DbContextOptions<Context> options)
             : base(options)
         {
         }

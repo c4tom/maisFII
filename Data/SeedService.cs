@@ -6,10 +6,10 @@ namespace MaisFII.Data
 {
     public class SeedService
     {
-        private MaisFIIContext _context;
+        private Context _context;
 
         // Injeção de Dependencia
-        public SeedService(MaisFIIContext ctx)
+        public SeedService(Context ctx)
         {
             _context = ctx;
         }

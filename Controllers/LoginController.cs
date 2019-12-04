@@ -14,10 +14,10 @@ namespace MaisFII.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
 
-        public LoginController(MaisFIIContext context)
+        public LoginController(Context context)
         {
             _context = context;
         }

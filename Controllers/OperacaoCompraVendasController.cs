@@ -11,9 +11,9 @@ namespace MaisFII.Controllers
 {
     public class OperacaoCompraVendasController : Controller
     {
-        private readonly MaisFIIContext _context;
+        private readonly Context _context;
 
-        public OperacaoCompraVendasController(MaisFIIContext context)
+        public OperacaoCompraVendasController(Context context)
         {
             _context = context;
         }
