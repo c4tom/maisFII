@@ -10,7 +10,7 @@ namespace MaisFII.Models {
         }
 
         [Key]
-        public int Id { get; set; }
+        public int EnderecoId { get; set; }
 
         [Display (Name = "Rua:")]
         [StringLength(90)]

@@ -7,7 +7,7 @@ namespace MaisFII.Models {
     [Table("Fundo")]
     public class Fundo {
         [Key]
-        public int Id { get; set; }
+        public int FundoId { get; set; }
 
         [Display(Name = "Razão Social")]
         [Required(ErrorMessage = "Campo obrigatório!")]
@@ -33,7 +33,7 @@ namespace MaisFII.Models {
 
         public Fundo(int id, string razaoSocial, string sigla, string segmento, string linkBMF)
         {
-            Id = id;
+            FundoId = id;
             RazaoSocial = razaoSocial;
             Sigla = sigla;
             Segmento = segmento;

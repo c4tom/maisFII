@@ -1,16 +1,17 @@
-﻿using MaisFII.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MaisFII.Utils;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using MaisFII.Models;
 
 namespace MaisFII.Controllers
 {
     public class UsuariosController : Controller
     {
         private readonly Context _context;
-
 
         public UsuariosController(Context context)
         {
@@ -32,19 +33,13 @@ namespace MaisFII.Controllers
             }
 
             var usuario = await _context.Usuario
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UsuarioId == id);
             if (usuario == null)
             {
                 return NotFound();
             }
 
             return View(usuario);
-        }
-
-        [HttpPost]
-        public IActionResult BuscarDados()
-        {
-            return Json(Utils.Utils.obterDados());
         }
 
         // GET: Usuarios/Create
@@ -58,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -85,15 +80,14 @@ namespace MaisFII.Controllers
             return View(usuario);
         }
 
-
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
         {
-            if (id != usuario.Id)
+            if (id != usuario.UsuarioId)
             {
                 return NotFound();
             }
@@ -107,7 +101,7 @@ namespace MaisFII.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!UsuarioExists(usuario.UsuarioId))
                     {
                         return NotFound();
                     }
@@ -130,7 +124,7 @@ namespace MaisFII.Controllers
             }
 
             var usuario = await _context.Usuario
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.UsuarioId == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -152,7 +146,7 @@ namespace MaisFII.Controllers
 
         private bool UsuarioExists(int id)
         {
-            return _context.Usuario.Any(e => e.Id == id);
+            return _context.Usuario.Any(e => e.UsuarioId == id);
         }
     }
 }

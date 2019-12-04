@@ -33,7 +33,7 @@ namespace MaisFII.Controllers
             }
 
             var fundo = await _context.Fundo
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.FundoId == id);
             if (fundo == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
+        public async Task<IActionResult> Create([Bind("FundoId,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
+        public async Task<IActionResult> Edit(int id, [Bind("FundoId,RazaoSocial,Sigla,Segmento,LinkBMF")] Fundo fundo)
         {
-            if (id != fundo.Id)
+            if (id != fundo.FundoId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace MaisFII.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FundoExists(fundo.Id))
+                    if (!FundoExists(fundo.FundoId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace MaisFII.Controllers
             }
 
             var fundo = await _context.Fundo
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.FundoId == id);
             if (fundo == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace MaisFII.Controllers
 
         private bool FundoExists(int id)
         {
-            return _context.Fundo.Any(e => e.Id == id);
+            return _context.Fundo.Any(e => e.FundoId == id);
         }
     }
 }

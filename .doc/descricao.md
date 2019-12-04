@@ -62,3 +62,6 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - http://learningprogramming.net/net/asp-net-core-mvc/login-form-with-session-in-asp-net-core-mvc/
 - https://www.learnrazorpages.com/razor-pages/ajax/unobtrusive-ajax
 - https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
+- http://learningprogramming.net/net/asp-net-core-mvc/autocomplete-in-asp-net-core-mvc-and-entity-framework-core/
+- https://alternativeto.net/software/essential-js-2/
+- http://www.macoratti.net/Cursos/aspncore2_mcurso1.htm

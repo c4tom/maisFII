@@ -8,7 +8,7 @@ namespace MaisFII.Models {
     [Table ("Usuario")]
     public class Usuario {
         [Key]
-        public int Id { get; set; }
+        public int UsuarioId { get; set; }
 
         // [RegularExpression(@"^[A-Z]+[a-zA-Z'\s\p{L}]*$", ErrorMessage = "Somente Caracteres e espaço, e a primeira letra em maiúscula")]
         [Display(Name = "Nome")]
@@ -52,7 +52,7 @@ namespace MaisFII.Models {
 
         public Usuario(int id, string nome, string email, string senha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
         {
-            Id = id;
+            UsuarioId = id;
             Nome = nome;
             Email = email;
             Senha = senha;

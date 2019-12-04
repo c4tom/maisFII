@@ -47,7 +47,7 @@ namespace MaisFII.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFundo(int id, Fundo fundo)
         {
-            if (id != fundo.Id)
+            if (id != fundo.FundoId)
             {
                 return BadRequest();
             }
@@ -82,7 +82,7 @@ namespace MaisFII.Controllers
             _context.Fundo.Add(fundo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFundo", new { id = fundo.Id }, fundo);
+            return CreatedAtAction("GetFundo", new { id = fundo.FundoId }, fundo);
         }
 
         // DELETE: api/FundosAPI/5
@@ -103,7 +103,7 @@ namespace MaisFII.Controllers
 
         private bool FundoExists(int id)
         {
-            return _context.Fundo.Any(e => e.Id == id);
+            return _context.Fundo.Any(e => e.FundoId == id);
         }
     }
 }

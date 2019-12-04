@@ -8,7 +8,7 @@ namespace MaisFII.Models {
     [Table("HistoricoFundo")]
     public class HistoricoFundo {
         [Key]
-        public int Id { get; set; }
+        public int HistoricoFundoId { get; set; }
 
         public float valor { get; set; }
 

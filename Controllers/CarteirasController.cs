@@ -33,7 +33,7 @@ namespace MaisFII.Controllers
             }
 
             var carteira = await _context.Carteira
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CarteiraId == id);
             if (carteira == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Carteira carteira)
+        public async Task<IActionResult> Create([Bind("CarteiraId,Nome,Descricao")] Carteira carteira)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao")] Carteira carteira)
+        public async Task<IActionResult> Edit(int id, [Bind("CarteiraId,Nome,Descricao")] Carteira carteira)
         {
-            if (id != carteira.Id)
+            if (id != carteira.CarteiraId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace MaisFII.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarteiraExists(carteira.Id))
+                    if (!CarteiraExists(carteira.CarteiraId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace MaisFII.Controllers
             }
 
             var carteira = await _context.Carteira
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CarteiraId == id);
             if (carteira == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace MaisFII.Controllers
 
         private bool CarteiraExists(int id)
         {
-            return _context.Carteira.Any(e => e.Id == id);
+            return _context.Carteira.Any(e => e.CarteiraId == id);
         }
     }
 }

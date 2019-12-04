@@ -7,7 +7,7 @@ namespace MaisFII.Models {
     [Table("Carteira")]
     public class Carteira {
         [Key]
-        public int Id { get; set; }
+        public int CarteiraId { get; set; }
 
         [Display(Name = "Carteira")]
         [Required(ErrorMessage = "Campo obrigatório!")]
@@ -25,7 +25,7 @@ namespace MaisFII.Models {
 
         public Carteira(int id, string nome, string descricao, Usuario usuario)
         {
-            Id = id;
+            CarteiraId = id;
             Nome = nome;
             Descricao = descricao;
             Usuario = usuario;

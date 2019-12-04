@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MaisFII.Models.Fundo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Índice";
 }
 
-<h1>Indice</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Novo Registro</a>
+    <a class="btn btn-success" asp-action="Create">Novo Registro</a>
 </p>
 <table class="table">
     <thead>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.LinkBMF)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-primary">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id"class="btn btn-primary">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-primary">Remover</a>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.FundoId">Editar</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.FundoId">Detalhes</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.FundoId">Remover</a>
             </td>
         </tr>
 }

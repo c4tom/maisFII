@@ -33,7 +33,7 @@ namespace MaisFII.Controllers
             }
 
             var historicoFundo = await _context.HistoricoFundo
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.HistoricoFundoId == id);
             if (historicoFundo == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,valor,Data")] HistoricoFundo historicoFundo)
+        public async Task<IActionResult> Create([Bind("HistoricoFundoId,valor,Data")] HistoricoFundo historicoFundo)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,valor,Data")] HistoricoFundo historicoFundo)
+        public async Task<IActionResult> Edit(int id, [Bind("HistoricoFundoId,valor,Data")] HistoricoFundo historicoFundo)
         {
-            if (id != historicoFundo.Id)
+            if (id != historicoFundo.HistoricoFundoId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace MaisFII.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HistoricoFundoExists(historicoFundo.Id))
+                    if (!HistoricoFundoExists(historicoFundo.HistoricoFundoId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace MaisFII.Controllers
             }
 
             var historicoFundo = await _context.HistoricoFundo
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.HistoricoFundoId == id);
             if (historicoFundo == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace MaisFII.Controllers
 
         private bool HistoricoFundoExists(int id)
         {
-            return _context.HistoricoFundo.Any(e => e.Id == id);
+            return _context.HistoricoFundo.Any(e => e.HistoricoFundoId == id);
         }
     }
 }

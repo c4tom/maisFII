@@ -1,7 +1,7 @@
 ﻿@model MaisFII.Models.Usuario
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
 <h1>Detalhes</h1>
@@ -49,6 +49,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id"class="btn btn-primary">Editar</a> |
-    <a asp-action="Index">Voltar</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.UsuarioId">Editar</a> |
+    <a class="" asp-action="Index">Voltar para Lista</a>
 </div>
