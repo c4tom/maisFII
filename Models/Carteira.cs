@@ -16,9 +16,10 @@ namespace MaisFII.Models {
 
         public string Descricao { get; set; }
 
+        [Required]
         public Usuario Usuario { get; set; }
 
-        public ICollection<OperacaoCompraVenda> Operacoes { get; set; } = new List<OperacaoCompraVenda>();
+        public virtual IEnumerable<Usuario> UsuarioLista { get; set; }
 
         public Carteira() { }
 
@@ -28,22 +29,6 @@ namespace MaisFII.Models {
             Nome = nome;
             Descricao = descricao;
             Usuario = usuario;
-        }
-
-        public List<Carteira> Listar () {
-            return null;
-        }
-
-        public bool Remover () {
-            return false;
-        }
-
-        public bool Inserir () {
-            return false;
-        }
-
-        public bool Atualizar () {
-            return false;
         }
 
     }

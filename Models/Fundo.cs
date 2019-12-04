@@ -29,8 +29,6 @@ namespace MaisFII.Models {
         [StringLength(250)]
         public string LinkBMF { get; set; }
 
-        public ICollection<OperacaoCompraVenda> Operacoes { get; set; } = new List<OperacaoCompraVenda>();
-
         public Fundo() { }
 
         public Fundo(int id, string razaoSocial, string sigla, string segmento, string linkBMF)

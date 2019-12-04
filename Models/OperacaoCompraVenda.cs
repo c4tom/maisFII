@@ -21,7 +21,9 @@ namespace MaisFII.Models {
 
         public Carteira Carteira { get; set; }
 
-        public Fundo Fundo { get; set; }
+        public Fundo Fundo { get; set; } = new Fundo();
+
+        public int FundoId { get; set; }
 
         public OperacaoCompraVenda() { }
 
