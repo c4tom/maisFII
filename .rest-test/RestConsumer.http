@@ -1,0 +1,23 @@
+### Configurações Iniciais ###
+@host_path = https://www.4devs.com.br/ferramentas_online.php
+
+
+### Usuario Documento
+POST {{host_path}}
+content-type: application/x-www-form-urlencoded
+
+acao=gerar_pessoa&sexo=I&pontuacao=S&idade=0&cep_estado=PR&txt_qtde=1&cep_cidade=
+
+### CEP
+# @name cepResp
+POST {{host_path}}
+content-type: application/x-www-form-urlencoded
+x-requested-with: XMLHttpRequest
+
+acao=gerar_cep&cep_estado=&cep_cidade=&somente_numeros=S
+
+
+####### PARA TESTAR O FUNCIONAMENTO  ########
+## Testar se funciona as features do REST Client (VSCode)
+@idDetail = {{{{cepResp.response.body.XPath.}}}}
+GET http://httpbin.org/get?&id={{idDetail}}
