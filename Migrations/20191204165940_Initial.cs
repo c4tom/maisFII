@@ -67,19 +67,19 @@ namespace MaisFII.Migrations
                 name: "OperacaoCompraVenda",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    OperacaoCompraVendaId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DataOperacao = table.Column<DateTime>(nullable: false),
                     QuantidadeCota = table.Column<int>(nullable: false),
                     ValorDaCota = table.Column<float>(nullable: false),
                     ValorTaxaDaOperadora = table.Column<float>(nullable: false),
-                    OperacaoTipo = table.Column<int>(nullable: false),
-                    CarteiraId = table.Column<int>(nullable: true),
+                    tipo = table.Column<int>(nullable: false),
+                    CarteiraId = table.Column<int>(nullable: false),
                     FundoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OperacaoCompraVenda", x => x.Id);
+                    table.PrimaryKey("PK_OperacaoCompraVenda", x => x.OperacaoCompraVendaId);
                     table.ForeignKey(
                         name: "FK_OperacaoCompraVenda_Fundo_FundoId",
                         column: x => x.FundoId,
@@ -171,7 +171,7 @@ namespace MaisFII.Migrations
                 column: "CarteiraId",
                 principalTable: "Carteira",
                 principalColumn: "CarteiraId",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Usuario_Carteira_CarteiraId",

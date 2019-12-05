@@ -35,10 +35,16 @@
             @Html.DisplayFor(model => model.ValorTaxaDaOperadora)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OperacaoTipo)
+            @Html.DisplayNameFor(model => model.tipo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OperacaoTipo)
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Carteira)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Carteira.Nome)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Fundo)
@@ -49,6 +55,6 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a class="btn btn-primary asp-action="Edit" asp-route-id="@Model.OperacaoCompraVendaId">Editar</a> |
     <a class="" asp-action="Index">Voltar para Lista</a>
 </div>

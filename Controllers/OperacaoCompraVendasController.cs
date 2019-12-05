@@ -21,7 +21,8 @@ namespace MaisFII.Controllers
         // GET: OperacaoCompraVendas
         public async Task<IActionResult> Index()
         {
-            var context = _context.OperacaoCompraVenda.Include(o => o.Fundo);
+            var context = _context.OperacaoCompraVenda.Include(o => o.Carteira).Include(o => o.Fundo);
+            
             return View(await context.ToListAsync());
         }
 
@@ -34,8 +35,9 @@ namespace MaisFII.Controllers
             }
 
             var operacaoCompraVenda = await _context.OperacaoCompraVenda
+                .Include(o => o.Carteira)
                 .Include(o => o.Fundo)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.OperacaoCompraVendaId == id);
             if (operacaoCompraVenda == null)
             {
                 return NotFound();
@@ -47,7 +49,10 @@ namespace MaisFII.Controllers
         // GET: OperacaoCompraVendas/Create
         public IActionResult Create()
         {
-            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial");
+            OperacaoCompraVenda ocv = new OperacaoCompraVenda();
+            
+            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome");
+            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "Sigla");
             return View();
         }
 
@@ -56,7 +61,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,OperacaoTipo,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Create([Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +69,7 @@ namespace MaisFII.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
             ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
             return View(operacaoCompraVenda);
         }
@@ -81,6 +87,7 @@ namespace MaisFII.Controllers
             {
                 return NotFound();
             }
+            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
             ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
             return View(operacaoCompraVenda);
         }
@@ -90,9 +97,9 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,OperacaoTipo,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Edit(int id, [Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
         {
-            if (id != operacaoCompraVenda.Id)
+            if (id != operacaoCompraVenda.OperacaoCompraVendaId)
             {
                 return NotFound();
             }
@@ -106,7 +113,7 @@ namespace MaisFII.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OperacaoCompraVendaExists(operacaoCompraVenda.Id))
+                    if (!OperacaoCompraVendaExists(operacaoCompraVenda.OperacaoCompraVendaId))
                     {
                         return NotFound();
                     }
@@ -117,6 +124,7 @@ namespace MaisFII.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
             ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
             return View(operacaoCompraVenda);
         }
@@ -130,8 +138,9 @@ namespace MaisFII.Controllers
             }
 
             var operacaoCompraVenda = await _context.OperacaoCompraVenda
+                .Include(o => o.Carteira)
                 .Include(o => o.Fundo)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.OperacaoCompraVendaId == id);
             if (operacaoCompraVenda == null)
             {
                 return NotFound();
@@ -153,7 +162,7 @@ namespace MaisFII.Controllers
 
         private bool OperacaoCompraVendaExists(int id)
         {
-            return _context.OperacaoCompraVenda.Any(e => e.Id == id);
+            return _context.OperacaoCompraVenda.Any(e => e.OperacaoCompraVendaId == id);
         }
     }
 }

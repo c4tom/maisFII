@@ -1,6 +1,6 @@
 ﻿namespace MaisFII.Models.Enums
 {
-    public enum OperacaoTipo : int
+    public enum OperacaoTipoEnum : int
     {
         Compra = 1,
         Venda = 2

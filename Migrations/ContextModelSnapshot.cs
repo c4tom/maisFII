@@ -128,20 +128,17 @@ namespace MaisFII.Migrations
 
             modelBuilder.Entity("MaisFII.Models.OperacaoCompraVenda", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OperacaoCompraVendaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CarteiraId")
+                    b.Property<int>("CarteiraId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataOperacao")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("FundoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OperacaoTipo")
                         .HasColumnType("int");
 
                     b.Property<int>("QuantidadeCota")
@@ -153,7 +150,10 @@ namespace MaisFII.Migrations
                     b.Property<float>("ValorTaxaDaOperadora")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.Property<int>("tipo")
+                        .HasColumnType("int");
+
+                    b.HasKey("OperacaoCompraVendaId");
 
                     b.HasIndex("CarteiraId");
 
@@ -228,7 +228,9 @@ namespace MaisFII.Migrations
                 {
                     b.HasOne("MaisFII.Models.Carteira", "Carteira")
                         .WithMany()
-                        .HasForeignKey("CarteiraId");
+                        .HasForeignKey("CarteiraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MaisFII.Models.Fundo", "Fundo")
                         .WithMany()

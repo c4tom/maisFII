@@ -18,6 +18,7 @@ namespace MaisFII.Models {
 
         [Required]
         public Usuario Usuario { get; set; }
+        public int UsuarioId { get; set; }
 
         public virtual IEnumerable<Usuario> UsuarioLista { get; set; }
 

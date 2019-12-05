@@ -61,21 +61,5 @@ namespace MaisFII.Models {
             CriadoEm = criadoEm;
             Endereco = endereco;
         }
-
-        public bool Inserir () {
-            return false;
-        }
-
-        public bool Remover () {
-            return false;
-        }
-
-        public bool Atualizar () {
-            return false;
-        }
-
-        public List<Usuario> Listar () {
-            return null;
-        }
     }
 }

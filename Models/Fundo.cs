@@ -39,26 +39,5 @@ namespace MaisFII.Models {
             Segmento = segmento;
             LinkBMF = linkBMF;
         }
-
-        public List<Fundo> Listar () {
-            return null;
-        }
-
-        public bool Inserir () {
-            return false;
-        }
-
-        public bool Remover () {
-            return false;
-        }
-
-        public bool Atualizar () {
-            return false;
-        }
-
-        public void Importar () {
-
-        }
-
     }
 }
