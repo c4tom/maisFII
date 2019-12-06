@@ -17,10 +17,10 @@ namespace MaisFII.Models {
         [Display(Name = "Quantidade de Cota")]
         public int QuantidadeCota { get; set; }
         [Display(Name = "Valor de cada cota")]
-        public float ValorDaCota { get; set; }
+        public double ValorDaCota { get; set; }
 
         [Display(Name = "Valor da Taxa (corretora)")]
-        public float ValorTaxaDaOperadora { get; set; }
+        public double ValorTaxaDaOperadora { get; set; }
 
         [Display(Name = "Tipo (C/V)")]
         [EnumDataType(typeof(OperacaoTipoEnum))]

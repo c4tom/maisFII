@@ -12,6 +12,7 @@ namespace MaisFII.Controllers
     public class OperacaoCompraVendasController : Controller
     {
         private readonly Context _context;
+
         public OperacaoCompraVendasController(Context context)
         {
             _context = context;
@@ -21,12 +22,12 @@ namespace MaisFII.Controllers
         {
             if (ocv != null)
             {
-                ViewBag.Carteira = new SelectList(_context.Carteira, "CarteiraId", "Nome", ocv.CarteiraId);
-                ViewBag.Fundo = new SelectList(_context.Fundo, "FundoId", "Sigla", ocv.FundoId);
+                ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", ocv.CarteiraId);
+                ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "Sigla", ocv.FundoId);
             } else
             {
-                ViewBag.Carteira = new SelectList(_context.Carteira, "CarteiraId", "Nome");
-                ViewBag.Fundo = new SelectList(_context.Fundo, "FundoId", "Sigla");
+                ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome");
+                ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "Sigla");
             }
         }
 
@@ -34,8 +35,6 @@ namespace MaisFII.Controllers
         public async Task<IActionResult> Index()
         {
             var context = _context.OperacaoCompraVenda.Include(o => o.Carteira).Include(o => o.Fundo);
-
-            
             return View(await context.ToListAsync());
         }
 
@@ -71,7 +70,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,Carteira,Fundo")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Create([Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +91,6 @@ namespace MaisFII.Controllers
             }
 
             var operacaoCompraVenda = await _context.OperacaoCompraVenda.FindAsync(id);
-
             if (operacaoCompraVenda == null)
             {
                 return NotFound();
@@ -107,7 +105,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,Carteira,Fundo")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Edit(int id, [Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (id != operacaoCompraVenda.OperacaoCompraVendaId)
             {

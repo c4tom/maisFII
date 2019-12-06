@@ -1,0 +1,48 @@
+## Use VSCODE extensao "REST Client"
+## Para testar o resultado do JSON PATH, 
+## acesse: http://www.jsonquerytool.com/
+
+## Use 3x # para separar uma URL da outra
+
+### Configurações Iniciais ###
+@host_path = https://localhost:44392/Api/FundosAPI
+
+
+####################### TESTE API ########################
+########### FUNDOS #############
+
+### Todos
+GET {{host_path}}
+
+### Detalhes de um Registro
+@id={{$randomInt 1 220 }}
+# @name respDetail
+
+GET {{host_path}}/{{id}}
+
+
+####### PARA TESTAR O FUNCIONAMENTO  ########
+## Testar se funciona as features do REST Client (VSCode)
+@randNumber = {{$randomInt 1 220 }}
+@idDetail = {{respDetail.response.body.$.fundoId}}
+GET http://httpbin.org/get?&id={{idDetail}}&random={{randNumber}}
+
+### (1) Inserir
+
+# @name respPost
+POST {{host_path}}
+Content-Type: application/json
+
+ {
+    "razaoSocial": "eee",
+    "sigla": "eeee",
+    "segmento": "1111",
+    "linkBMF": "eeee"
+  }
+
+### Testar a adicão do registro acima (1)
+
+GET {{host_path}}/{{respPost.response.body.fundoId}}
+
+### Remove a adição do registro anterior (1)
+DELETE {{host_path}}/{{respPost.response.body.fundoId}}

@@ -8,6 +8,8 @@
 
 <h4>Usuario</h4>
 <hr />
+<p><button class="btn btn-primary" id="loadDados">Carregar Dados da API</button></p>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -24,9 +26,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
+                <input type="password" asp-for="Senha" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label"></label>
                 <input asp-for="Cpf" class="form-control" />
@@ -34,12 +42,36 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataNascimento" class="control-label"></label>
-                <input asp-for="DataNascimento" class="form-control" />
+                <input type="date" asp-for="DataNascimento" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <input type="submit" value="Adicionar" class="btn btn-primary" />
+                <label asp-for="Logradouro" class="control-label"></label>
+                <input asp-for="Logradouro" class="form-control" />
+                <span asp-validation-for="Logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cep" class="control-label"></label>
+                <input asp-for="Cep" class="form-control" />
+                <span asp-validation-for="Cep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bairro" class="control-label"></label>
+                <input asp-for="Bairro" class="form-control" />
+                <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Localidade" class="control-label"></label>
+                <input asp-for="Localidade" class="form-control" />
+                <span asp-validation-for="Localidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uf" class="control-label"></label>
+                <input asp-for="Uf" class="form-control" />
+                <span asp-validation-for="Uf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -51,4 +83,34 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $("#loadDados").click(function () {
+
+            $.ajax({
+                dataType: "json",
+                type: "GET",
+                url: "/Api/Dados/deCadastro",
+                data: {},
+                success: function (dados) {
+                    $(dados).each(function (i) {
+                        var d = dados.data_nasc.split("/");
+                        $("#Email").val(dados.email);
+                        $("#Nome").val(dados.nome);
+                        $("#Celular").val(dados.celular);
+                        $("#Cpf").val(dados.cpf);
+                        $("#DataNascimento").val(d[2]+"-"+d[1]+"-"+d[0]);
+                        $("#Senha").val(dados.senha);
+                        $("#Cep").val(dados.cep);
+                        $("#Bairro").val(dados.bairro);
+                        $("#Localidade").val(dados.cidade);
+                        $("#Uf").val(dados.estado);
+                        $("#Logradouro").val(dados.endereco);
+
+                    });
+                }
+            });
+
+        });
+    </script>
 }

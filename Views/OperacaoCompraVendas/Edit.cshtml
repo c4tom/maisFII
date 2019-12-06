@@ -16,7 +16,7 @@
             <input type="hidden" asp-for="OperacaoCompraVendaId" />
             <div class="form-group">
                 <label asp-for="DataOperacao" class="control-label"></label>
-                <input asp-for="DataOperacao" class="form-control" />
+                <input type="date" asp-for="DataOperacao" class="form-control" />
                 <span asp-validation-for="DataOperacao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ValorDaCota" class="control-label"></label>
-                <input asp-for="ValorDaCota" class="form-control" />
+                <input type="" asp-for="ValorDaCota" class="form-control" />
                 <span asp-validation-for="ValorDaCota" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,20 +42,17 @@
                 <span asp-validation-for="tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Carteira" class="control-label"></label>
-                <select asp-for="Carteira" class="form-control" asp-items="@ViewBag.Carteira">
+                <label asp-for="CarteiraId" class="control-label"></label>
+                <select asp-for="CarteiraId" class="form-control" asp-items="ViewBag.CarteiraId">
                     <option> -- SELECIONE -- </option>
                 </select>
-                <span asp-validation-for="Carteira" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fundo" class="control-label"></label>
-                <select asp-for="Fundo" class="form-control" asp-items="@ViewBag.Fundo">
+                <label asp-for="FundoId" class="control-label"></label>
+                <select asp-for="FundoId" class="form-control" asp-items="ViewBag.FundoId">
                     <option> -- SELECIONE -- </option>
                 </select>
-                <span asp-validation-for="Fundo" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>

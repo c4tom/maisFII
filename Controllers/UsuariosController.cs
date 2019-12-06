@@ -53,7 +53,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,Email,Senha,Cpf,Celular,DataNascimento,Logradouro,Cep,Bairro,Localidade,Uf,CriadoEm")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Cpf,DataNascimento,CriadoEm")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Celular,Cpf,DataNascimento,Logradouro,Cep,Bairro,Localidade,Uf,CriadoEm")] Usuario usuario)
         {
             if (id != usuario.UsuarioId)
             {

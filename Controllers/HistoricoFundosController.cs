@@ -21,7 +21,7 @@ namespace MaisFII.Controllers
         // GET: HistoricoFundos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.HistoricoFundo.ToListAsync());
+            return View(await _context.HistoricoFundo.Include(f=> f.Fundo).ToListAsync());
         }
 
         // GET: HistoricoFundos/Details/5
@@ -32,7 +32,7 @@ namespace MaisFII.Controllers
                 return NotFound();
             }
 
-            var historicoFundo = await _context.HistoricoFundo
+            var historicoFundo = await _context.HistoricoFundo.Include(f => f.Fundo)
                 .FirstOrDefaultAsync(m => m.HistoricoFundoId == id);
             if (historicoFundo == null)
             {

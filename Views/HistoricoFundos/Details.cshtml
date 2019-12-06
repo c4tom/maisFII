@@ -1,10 +1,10 @@
 ﻿@model MaisFII.Models.HistoricoFundo
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Detalhes</h1>
+<h1>Details</h1>
 
 <div>
     <h4>HistoricoFundo</h4>
@@ -25,6 +25,6 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.HistoricoFundoId">Editar</a> |
-    <a class="" asp-action="Index">Voltar para Lista</a>
+    <a asp-action="Edit" asp-route-id="@Model.HistoricoFundoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

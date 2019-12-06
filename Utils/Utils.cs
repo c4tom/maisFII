@@ -30,5 +30,27 @@ namespace MaisFII.Utils
                 return result;
             }
         }
+        public static string file_get_contents(string fileName)
+        {
+
+            string sContents = string.Empty;
+            if (fileName.ToLower().IndexOf("http") > -1)
+            {
+                // URL 
+                System.Net.WebClient wc = new System.Net.WebClient();
+                byte[] response = wc.DownloadData(fileName);
+                sContents = System.Text.Encoding.ASCII.GetString(response);
+            }
+            else
+            {
+                // Regular Filename 
+                System.IO.StreamReader sr = new System.IO.StreamReader(fileName);
+                sContents = sr.ReadToEnd();
+                sr.Close();
+            }
+            return sContents;
+        }
+
+        
     }
 }

@@ -13,22 +13,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Nome) /<br />
+                @Html.DisplayNameFor(model => model.Email) <br />
+                @Html.DisplayNameFor(model => model.Celular)
+
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Senha)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Cpf)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CriadoEm)
+                Endereço
             </th>
             <th></th>
         </tr>
@@ -37,23 +32,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @Html.DisplayFor(modelItem => item.Nome)<br />
+                @Html.DisplayFor(modelItem => item.Email)<br />
+                @Html.DisplayFor(modelItem => item.Celular)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td>
-            <td>
+             <td>
                 @Html.DisplayFor(modelItem => item.Cpf)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CriadoEm)
-            </td>
+             <td>
+                 Logradouro: @Html.DisplayFor(modelItem => item.Logradouro)<br />
+                 Cep: @Html.DisplayFor(modelItem => item.Cep)<br />
+                 Bairro: @Html.DisplayFor(modelItem => item.Bairro)<br />
+                 Localidade: @Html.DisplayFor(modelItem => item.Localidade)<br />
+                 Uf: @Html.DisplayFor(modelItem => item.Uf)
+             </td>
             <td>
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.UsuarioId">Editar</a> |
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.UsuarioId">Detalhes</a> |

@@ -1,15 +1,18 @@
 # Projeto MaisFII
 
-Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imobiliários
+Este projeto propõe no gerenciamento de carteiras de Fundos de Investimentos Imobiliários, para finalizar o projeto, serão 10 sprints
 
-## Descrição
-- Adicionar usuários via REST service ou manualmente (CRUD)
-- Gerenciamento de Fundos (CRUD)
+## Funcionalidades (SPRINT 1)
+- Criar REST API de CRUD (fundos, historico de fundos, Operações C/V)
+- CRUD para (usuario, carteiras, fundos, operações de CV)
+- Consumir um servico REST, para cadastro de Usuário
+  - Criar proxy do servico de dados para o uso no cadastro de usuários
 - Usuários podem gerenciar carteiras (CRUD)
-  - Fazer operações de ativos - compra/venda de FII para uma carteira existente
-- Listar valores de FII do dia X 
-- Importação de dados de conteúdo através de planilhas (CSV)
-- Tela de login com sessão
+- Fazer operações de ativos - compra/venda de FII para uma carteira existente
+- Listar Carteira com o subtotal da carteira
+- Importação de dados de conteúdo através de planilhas (CSV) - Fundos
+- Filtrar histórico de fundos por data
+
 
 ## UML
 ![](./Diagrama-maisFII.svg)
@@ -39,7 +42,9 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 ### Banco de Dados
 ![](../.db/der.svg)
 
-## TODO (Pós Faculdade)
+## TODO (Pós Faculdade / FASES Posteriores)
+
+- Tela de login com sessão
 
 - Segmentos
   - Cadadstro
@@ -67,3 +72,4 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - http://www.macoratti.net/Cursos/aspncore2_mcurso1.htm
 - https://stackoverflow.com/questions/41740638/using-enum-for-dropdown-list-in-asp-net-mvc-core
 - https://www.learnrazorpages.com/razor-pages/forms
+- Varios exemplos ASP.NET https://github.com/ajsaulsberry?tab=repositories

@@ -12,17 +12,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataOperacao)
+            <th title="@Html.DisplayNameFor(model => model.DataOperacao)">
+                Data
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuantidadeCota)
+            <th title="@Html.DisplayNameFor(model => model.QuantidadeCota)">
+                Cota
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorDaCota)
+            <th title="@Html.DisplayNameFor(model => model.ValorDaCota)">
+                Vl. Cota
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorTaxaDaOperadora)
+            <th title="@Html.DisplayNameFor(model => model.ValorTaxaDaOperadora)">
+                Taxa
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.tipo)
@@ -33,6 +33,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Fundo)
             </th>
+            <th>Total</th>
             <th></th>
         </tr>
     </thead>
@@ -58,7 +59,13 @@
                 @Html.DisplayFor(modelItem => item.Carteira.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fundo.RazaoSocial)
+                @Html.DisplayFor(modelItem => item.Fundo.Sigla)
+            </td>
+            <td>
+                @{
+                    double subtotal = (item.QuantidadeCota * item.ValorDaCota) - item.ValorTaxaDaOperadora;
+                }
+                @subtotal.ToString("C2")
             </td>
             <td>
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.OperacaoCompraVendaId">Editar</a> |

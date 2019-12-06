@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MaisFII.Models;
-using MaisFII.Data;
 
 namespace MaisFII
 {
@@ -21,19 +25,11 @@ namespace MaisFII
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSession();
-            //services.AddMvc();
-            //services.AddMvcCore();
-
+			services.AddSession();
             services.AddControllersWithViews();
 
             services.AddDbContext<Context>(options =>
-                options.UseMySql(Configuration.GetConnectionString("Context"), builder =>
-                builder.MigrationsAssembly("MaisFII")));
-            
-            
-            // Registrando Seed Service
-            services.AddScoped<SeedService>();
+                    options.UseSqlServer(Configuration.GetConnectionString("Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

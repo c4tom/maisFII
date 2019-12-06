@@ -16,20 +16,22 @@ namespace MaisFII.Models {
 
         public string Descricao { get; set; }
 
-        [NotMapped]
-        public virtual Usuario Usuario { get; set; }
+        [Display(Name = "Usuário")]
+        [Required]
         public int UsuarioId { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
 
         public Carteira() { }
 
-        public Carteira(int id, string nome, string descricao, Usuario usuario)
+        public Carteira(int carteiraId, string nome, string descricao, int usuarioId, Usuario usuario)
         {
-            CarteiraId = id;
+            CarteiraId = carteiraId;
             Nome = nome;
             Descricao = descricao;
+            UsuarioId = usuarioId;
             Usuario = usuario;
         }
-
     }
 
 }

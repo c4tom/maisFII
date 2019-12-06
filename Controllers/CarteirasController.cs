@@ -18,10 +18,22 @@ namespace MaisFII.Controllers
             _context = context;
         }
 
+        private async void ViewBagsBuild(Carteira c)
+        {
+            if (c != null)
+            {
+                ViewData["UsuarioId"] = new SelectList(_context.Usuario, "UsuarioId", "Nome", c.UsuarioId);
+            }
+            else
+            {
+                ViewData["UsuarioId"] = new SelectList(_context.Usuario, "UsuarioId", "Nome");
+            }
+        }
+
         // GET: Carteiras
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Carteira.ToListAsync());
+            return View(await _context.Carteira.Include(u => u.Usuario).ToListAsync());
         }
 
         // GET: Carteiras/Details/5
@@ -32,7 +44,7 @@ namespace MaisFII.Controllers
                 return NotFound();
             }
 
-            var carteira = await _context.Carteira
+            var carteira = await _context.Carteira.Include(u => u.Usuario)
                 .FirstOrDefaultAsync(m => m.CarteiraId == id);
             if (carteira == null)
             {
@@ -45,6 +57,7 @@ namespace MaisFII.Controllers
         // GET: Carteiras/Create
         public IActionResult Create()
         {
+            ViewBagsBuild(null);
             return View();
         }
 
@@ -53,7 +66,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarteiraId,Nome,Descricao")] Carteira carteira)
+        public async Task<IActionResult> Create([Bind("CarteiraId,Nome,Descricao,UsuarioId")] Carteira carteira)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +74,7 @@ namespace MaisFII.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBagsBuild(carteira);
             return View(carteira);
         }
 
@@ -77,6 +91,7 @@ namespace MaisFII.Controllers
             {
                 return NotFound();
             }
+            ViewBagsBuild(carteira);
             return View(carteira);
         }
 
@@ -85,7 +100,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CarteiraId,Nome,Descricao")] Carteira carteira)
+        public async Task<IActionResult> Edit(int id, [Bind("CarteiraId,Nome,Descricao,UsuarioId")] Carteira carteira)
         {
             if (id != carteira.CarteiraId)
             {
@@ -112,6 +127,7 @@ namespace MaisFII.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBagsBuild(carteira);
             return View(carteira);
         }
 
