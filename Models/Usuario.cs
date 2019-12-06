@@ -39,7 +39,7 @@ namespace MaisFII.Models {
 
         [Display(Name = "Data de Nascimento")]
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento { get; set; }
 
         public DateTime CriadoEm { get; set; } = DateTime.Now;
@@ -50,12 +50,13 @@ namespace MaisFII.Models {
         {
         }
 
-        public Usuario(int id, string nome, string email, string senha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
+        public Usuario(int usuarioId, string nome, string email, string senha, string confirmacaoSenha, string cpf, DateTime dataNascimento, DateTime criadoEm, Endereco endereco)
         {
-            UsuarioId = id;
+            UsuarioId = usuarioId;
             Nome = nome;
             Email = email;
             Senha = senha;
+            ConfirmacaoSenha = confirmacaoSenha;
             Cpf = cpf;
             DataNascimento = dataNascimento;
             CriadoEm = criadoEm;

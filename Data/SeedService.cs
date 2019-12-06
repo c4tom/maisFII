@@ -20,7 +20,7 @@ namespace MaisFII.Data
 
             if (!_context.Usuario.Any())
             {
-                Usuario u1 = new Usuario(1, "Jose Silva","aaa@email.com","1234567","1",DateTime.Now, DateTime.Now, new Endereco());
+                
             }
         }
     }

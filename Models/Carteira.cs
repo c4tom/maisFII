@@ -16,11 +16,9 @@ namespace MaisFII.Models {
 
         public string Descricao { get; set; }
 
-        [Required]
-        public Usuario Usuario { get; set; }
+        [NotMapped]
+        public virtual Usuario Usuario { get; set; }
         public int UsuarioId { get; set; }
-
-        public virtual IEnumerable<Usuario> UsuarioLista { get; set; }
 
         public Carteira() { }
 

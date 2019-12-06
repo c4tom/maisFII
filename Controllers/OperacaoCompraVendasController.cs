@@ -12,16 +12,29 @@ namespace MaisFII.Controllers
     public class OperacaoCompraVendasController : Controller
     {
         private readonly Context _context;
-
         public OperacaoCompraVendasController(Context context)
         {
             _context = context;
+        }
+
+        private async void ViewBagsBuild(OperacaoCompraVenda ocv)
+        {
+            if (ocv != null)
+            {
+                ViewBag.Carteira = new SelectList(_context.Carteira, "CarteiraId", "Nome", ocv.CarteiraId);
+                ViewBag.Fundo = new SelectList(_context.Fundo, "FundoId", "Sigla", ocv.FundoId);
+            } else
+            {
+                ViewBag.Carteira = new SelectList(_context.Carteira, "CarteiraId", "Nome");
+                ViewBag.Fundo = new SelectList(_context.Fundo, "FundoId", "Sigla");
+            }
         }
 
         // GET: OperacaoCompraVendas
         public async Task<IActionResult> Index()
         {
             var context = _context.OperacaoCompraVenda.Include(o => o.Carteira).Include(o => o.Fundo);
+
             
             return View(await context.ToListAsync());
         }
@@ -49,10 +62,7 @@ namespace MaisFII.Controllers
         // GET: OperacaoCompraVendas/Create
         public IActionResult Create()
         {
-            OperacaoCompraVenda ocv = new OperacaoCompraVenda();
-            
-            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome");
-            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "Sigla");
+            ViewBagsBuild(null);
             return View();
         }
 
@@ -61,7 +71,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Create([Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,Carteira,Fundo")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (ModelState.IsValid)
             {
@@ -69,8 +79,7 @@ namespace MaisFII.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
-            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
+            ViewBagsBuild(operacaoCompraVenda);
             return View(operacaoCompraVenda);
         }
 
@@ -83,12 +92,13 @@ namespace MaisFII.Controllers
             }
 
             var operacaoCompraVenda = await _context.OperacaoCompraVenda.FindAsync(id);
+
             if (operacaoCompraVenda == null)
             {
                 return NotFound();
             }
-            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
-            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
+            
+            ViewBagsBuild(operacaoCompraVenda);
             return View(operacaoCompraVenda);
         }
 
@@ -97,7 +107,7 @@ namespace MaisFII.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,CarteiraId,FundoId")] OperacaoCompraVenda operacaoCompraVenda)
+        public async Task<IActionResult> Edit(int id, [Bind("OperacaoCompraVendaId,DataOperacao,QuantidadeCota,ValorDaCota,ValorTaxaDaOperadora,tipo,Carteira,Fundo")] OperacaoCompraVenda operacaoCompraVenda)
         {
             if (id != operacaoCompraVenda.OperacaoCompraVendaId)
             {
@@ -124,8 +134,7 @@ namespace MaisFII.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CarteiraId"] = new SelectList(_context.Carteira, "CarteiraId", "Nome", operacaoCompraVenda.CarteiraId);
-            ViewData["FundoId"] = new SelectList(_context.Fundo, "FundoId", "RazaoSocial", operacaoCompraVenda.FundoId);
+            ViewBagsBuild(operacaoCompraVenda);
             return View(operacaoCompraVenda);
         }
 

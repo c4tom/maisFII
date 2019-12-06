@@ -12,6 +12,7 @@ namespace MaisFII.Models {
         public int OperacaoCompraVendaId { get; set; }
 
         [Display(Name = "Data da Operação")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public DateTime DataOperacao { get; set; }
         [Display(Name = "Quantidade de Cota")]
         public int QuantidadeCota { get; set; }
@@ -23,27 +24,32 @@ namespace MaisFII.Models {
 
         [Display(Name = "Tipo (C/V)")]
         [EnumDataType(typeof(OperacaoTipoEnum))]
-        public OperacaoTipoEnum tipo { get; set; }
+        public OperacaoTipoEnum tipo { get; set; } = new OperacaoTipoEnum();
 
-        public Carteira Carteira { get; set; }
-
+        [Required]
         [Display(Name = "Carteira")]
         public int CarteiraId { get; set; }
-        public Fundo Fundo { get; set; } = new Fundo();
+
+        public virtual Carteira Carteira { get; set; }
+        
         [Display(Name = "Fundo")]
+        [Required]
         public int FundoId { get; set; }
+
+        public virtual Fundo Fundo { get; set; }
 
         public OperacaoCompraVenda() { }
 
-        public OperacaoCompraVenda(int id, DateTime dataOperacao, int quantidadeCota, float valorDaCota, float valorTaxaDaOperadora, Carteira carteira, Fundo fundo)
+        public OperacaoCompraVenda(int operacaoCompraVendaId, DateTime dataOperacao, int quantidadeCota, float valorDaCota, float valorTaxaDaOperadora, OperacaoTipoEnum tipo, int carteiraId, int fundoId)
         {
-            OperacaoCompraVendaId = id;
+            OperacaoCompraVendaId = operacaoCompraVendaId;
             DataOperacao = dataOperacao;
             QuantidadeCota = quantidadeCota;
             ValorDaCota = valorDaCota;
             ValorTaxaDaOperadora = valorTaxaDaOperadora;
-            Carteira = carteira;
-            Fundo = fundo;
+            this.tipo = tipo;
+            CarteiraId = carteiraId;
+            FundoId = fundoId;
         }
     }
 }

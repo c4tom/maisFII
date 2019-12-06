@@ -19,7 +19,7 @@
 GET {{host_path}}
 
 ### Detalhes de um Registro
-@id=240
+@id=2
 # @name respDetail
 
 GET {{host_path}}/{{id}}

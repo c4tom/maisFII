@@ -66,3 +66,4 @@ Este projeto propõe no gerenciamento de carteira de Fundos de Investimentos Imo
 - https://alternativeto.net/software/essential-js-2/
 - http://www.macoratti.net/Cursos/aspncore2_mcurso1.htm
 - https://stackoverflow.com/questions/41740638/using-enum-for-dropdown-list-in-asp-net-mvc-core
+- https://www.learnrazorpages.com/razor-pages/forms
